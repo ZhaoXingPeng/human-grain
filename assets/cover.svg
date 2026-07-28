@@ -1,11 +1,37 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
-  <title id="title">Human Grain cover</title>
-  <desc id="desc">An off-white paper with uneven handwritten lines and a fluorescent green correction stroke.</desc>
-  <rect width="1200" height="630" fill="#101211"/>
-  <rect x="170" y="90" width="860" height="450" rx="4" fill="#e7e4d8" stroke="#b7b9aa" stroke-width="3" transform="rotate(-2 600 315)"/>
-  <path d="M285 220 C410 204 468 239 570 218 S760 232 900 210" fill="none" stroke="#101211" stroke-width="9" stroke-linecap="round"/>
-  <path d="M282 282 C390 270 475 301 620 280 S785 292 900 276" fill="none" stroke="#101211" stroke-width="7" stroke-linecap="round"/>
-  <path d="M286 338 C380 326 426 354 525 338" fill="none" stroke="#101211" stroke-width="7" stroke-linecap="round"/>
-  <path d="M300 420 C455 390 650 448 884 402" fill="none" stroke="#b8f04a" stroke-width="13" stroke-linecap="round"/>
-  <circle cx="925" cy="460" r="9" fill="#ff6b4a"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+  <title id="title">Human Grain editorial workspace</title>
+  <desc id="desc">A dark editorial workspace with a marked-up Markdown document, status labels, and a bright correction stroke.</desc>
+  <rect width="1600" height="900" fill="#0d0f0e"/>
+  <path d="M0 116H1600M0 744H1600" stroke="#2b302c" stroke-width="2"/>
+  <path d="M118 0V900M1450 0V900" stroke="#2b302c" stroke-width="2"/>
+  <g font-family="Arial, Helvetica, sans-serif">
+    <text x="118" y="82" fill="#b8f04a" font-size="22" letter-spacing="5">HG / HUMAN GRAIN / 0.1</text>
+    <text x="118" y="202" fill="#f4f1e8" font-size="96" font-weight="700" letter-spacing="-2">HUMAN</text>
+    <text x="118" y="296" fill="#f4f1e8" font-size="96" font-weight="700" letter-spacing="-2">GRAIN</text>
+    <text x="122" y="352" fill="#a9afa9" font-size="22" letter-spacing="2">A MARKDOWN SKILL FOR TEXT WITH A PULSE.</text>
+    <text x="122" y="408" fill="#ff6b4a" font-size="18" letter-spacing="3">STRIP / FRICTION / GRAIN</text>
+    <text x="118" y="820" fill="#777f78" font-size="16" letter-spacing="2">WRITTEN, NOT GENERATED</text>
+  </g>
+  <g transform="translate(720 146) rotate(-3 360 280)">
+    <rect width="610" height="500" fill="#f4f1e8"/>
+    <rect x="34" y="34" width="542" height="432" fill="none" stroke="#c8c5ba" stroke-width="2"/>
+    <text x="62" y="88" fill="#0d0f0e" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700"># 先说背景</text>
+    <text x="62" y="132" fill="#424841" font-family="monospace" font-size="17">团队现在不是没有工具。</text>
+    <text x="62" y="164" fill="#424841" font-family="monospace" font-size="17">是工具太多了，消息散在各处。</text>
+    <rect x="58" y="190" width="438" height="25" fill="#b8f04a" opacity="0.82"/>
+    <text x="62" y="210" fill="#0d0f0e" font-family="monospace" font-size="17">先把任务放在一个地方。</text>
+    <text x="62" y="270" fill="#0d0f0e" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="700">## 先记一下</text>
+    <text x="78" y="312" fill="#424841" font-family="monospace" font-size="17">- 负责人</text>
+    <text x="78" y="346" fill="#424841" font-family="monospace" font-size="17">- 截止时间（先空着）</text>
+    <text x="78" y="380" fill="#424841" font-family="monospace" font-size="17">- 还有个没想好的点……</text>
+    <path d="M60 420 C190 402 330 438 512 414" fill="none" stroke="#ff6b4a" stroke-width="9" stroke-linecap="round"/>
+    <text x="388" y="454" fill="#ff6b4a" font-family="monospace" font-size="15">TODO / keep it human</text>
+  </g>
+  <g transform="translate(1410 150)">
+    <rect width="96" height="30" fill="#b8f04a"/>
+    <text x="14" y="21" fill="#0d0f0e" font-family="monospace" font-size="14">3 / 5</text>
+    <text x="0" y="70" fill="#777f78" font-family="monospace" font-size="14">ROUGHNESS</text>
+    <text x="0" y="108" fill="#f4f1e8" font-family="monospace" font-size="14">typo off</text>
+    <text x="0" y="148" fill="#f4f1e8" font-family="monospace" font-size="14">safe fields</text>
+  </g>
 </svg>

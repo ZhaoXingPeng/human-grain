@@ -22,9 +22,9 @@ Markdown 的格式本身会泄露生成方式。完全对称的标题、列表�
 
 ## README 视觉方向
 
-按本地 `frontend-design`、`ui-design-system` 和 `imagegen` 技能做了一个克制的开源工具首页：深炭黑 `#101211` 作为底，灰白 `#e7e4d8` 作为纸张，荧光绿 `#b8f04a` 表示标记，橙红 `#ff6b4a` 表示修正点。标题使用系统无衬线，正文保持 GitHub 原生阅读节奏；hero 只承担“纸张被人改过”的一个记忆点，不堆装饰。
+按本地 `frontend-design`、`ui-design-system` 和 `imagegen` 技能做了一个克制的开源工具首页：深炭黑 `#0d0f0e` 作为底，灰白 `#f4f1e8` 作为纸张，荧光绿 `#b8f04a` 表示标记，橙红 `#ff6b4a` 表示修正点，冷蓝 `#8fb8ff` 表示第二阶段。标题使用系统无衬线，正文保持 GitHub 原生阅读节奏；hero 只承担“编辑工作台”的记忆点，前后对照图承担产品解释，不堆装饰。
 
-生图 API 调用记录见 [`assets/GENERATION.md`](assets/GENERATION.md)。接口凭证无效时没有伪造生成结果，仓库保留 SVG 源和 1200×630 PNG 栅格预览，方便以后替换。发布前用本地 Quick Look 栅格化检查了尺寸和透明通道，README 同时保留 alt 文本。
+生图 API 调用记录见 [`assets/GENERATION.md`](assets/GENERATION.md)。接口凭证无效时没有伪造生成结果，仓库保留 SVG 源和 `1600×900`、`1600×360`、`1600×650` PNG 栅格预览，方便以后替换。发布前用本地 Quick Look 栅格化检查了尺寸和透明通道，README 同时保留 alt 文本。
 
 ## 非目标
 

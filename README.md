@@ -1,48 +1,46 @@
-# Human Grain｜人间颗粒
+<p align="center">
+  <img src="assets/cover.png" alt="Human Grain editorial workspace" width="960">
+</p>
+
+<h1 align="center">Human Grain｜人间颗粒</h1>
+
+<p align="center">
+  <strong>A Markdown skill for text with a pulse.</strong><br>
+  让文档像人写的，不像机器生成的。
+</p>
 
 <p align="center">
   <a href="https://github.com/ZhaoXingPeng/human-grain/actions/workflows/validate.yml"><img src="https://github.com/ZhaoXingPeng/human-grain/actions/workflows/validate.yml/badge.svg" alt="validation"></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-111111.svg" alt="MIT license"></a>
-  <a href="examples/"><img src="https://img.shields.io/badge/modes-5%20core%20%2B%203%20experimental-8aa66b.svg" alt="five core modes"></a>
+  <a href="examples/"><img src="https://img.shields.io/badge/5%20core%20modes%20%2B%203%20experimental-8aa66b.svg" alt="modes"></a>
 </p>
 
-<p align="center"><a href="examples/">Examples</a> · <a href="DESIGN.md">Design</a> · <a href="RESEARCH.md">Research</a> · <a href="STRICT-TESTS.md">Tests</a></p>
+<p align="center">
+  <a href="#quickstart">Quickstart</a> ·
+  <a href="#what-changes">What changes</a> ·
+  <a href="#modes">Modes</a> ·
+  <a href="examples/">Examples</a> ·
+  <a href="DESIGN.md">Design</a> ·
+  <a href="RESEARCH.md">Research</a>
+</p>
 
-> Make documents feel written, not generated.
->
-> 让文档像人写的，不像机器生成的。
+Human Grain 是一个给 Codex / Claude Code 用的 writing skill。它做的事情很具体：去掉 AI 常见的整齐和套话，再按可控的粗糙度，让句子、段落和 Markdown 留下一点人的停顿、判断和毛边。
 
-<p align="center"><img src="assets/cover.png" alt="A marked-up document on a dark field" width="960"></p>
+它不是随机损坏器，也不承诺绕过任何检测。事实、链接、代码和关键字段先保住；人为感来自具体场景、局部不对称和可回滚的小噪声。
 
-Human Grain 是一个给 Codex / Claude Code 使用的 writing skill。
-它不负责把文章润色得更漂亮，反而会把过度整齐的句子、段落和 Markdown 结构拆开一点，留下可控的人的痕迹。
+## The loop
 
-## 适合什么
+每份文档都走三轮。不是把同一个 prompt 重复三次，而是每轮解决一个不同的问题。
 
-- 已经写好的文档：去掉 AI 套话，改成像工作稿
-- 只有几个要点：直接生成一份不太工整但能继续改的初稿
-- 只想修一段：局部修复，不把整篇重写
-- 同一份材料：按不同读者生成另一种“人写变体”
-- 会议记录、聊天片段、待办清单：整理成能用的文档，但不抹平原始痕迹
-- 未完稿续写、提纲转工作稿、日报/进度碎片整理（实验入口）
+<p align="center"><img src="assets/three-rounds.png" alt="Strip, friction, grain: the three-round loop" width="960"></p>
 
-## 核心流程
+| Round | 做什么 | 产出 |
+| --- | --- | --- |
+| 01 / Strip | 找 AI tell、删空话、保留事实 | 一份不再像模板的底稿 |
+| 02 / Friction | 复用已有场景，加入判断、停顿和不均匀节奏 | 有作者感的正文 |
+| 03 / Grain | 按来源和阅读节奏挑 2-4 种 Markdown 动作 | 灵动但仍可解析的格式 |
 
-每次固定跑三轮：
-
-![Three-round loop](assets/three-rounds.png)
-
-1. **去机器味**：删套话、拆均匀句式、保留事实和判断
-2. **加人为感**：加入具体场景、停顿、自我修正和少量口语
-3. **改 Markdown**：用有理由的非对称标题、列表、旁注和短段落制造颗粒
-
-粗糙度从 1 到 5 可调。默认 3/5，`typo_noise` 默认关闭。医疗、法律、财务、安全、代码、配置和对外承诺自动降级为 `safe` profile：只改套话和句长，不改结构、顺序或关键字段。
-
-这里有三种不同层级的“三轮”，不要混为一谈：`THREE-ROUNDS.md` 是一次性的设计 loop；`SKILL.md` 的 Detect → Voice → Format 是每份文档都要执行的运行 loop；`STRICT-TESTS.md` 是发布前可重复的验证 loop。三者分别验证“怎么设计”“怎么产出”“有没有坏”。
-
-## 安装
-
-把 `human-grain/` 放入 Codex 的 skills 目录（通常是 `~/.codex/skills/`），或放入 Claude Code 的 skills 目录（通常是项目级 `.claude/skills/`），然后直接引用：
+## Quickstart
 
 ```bash
 git clone git@github.com:ZhaoXingPeng/human-grain.git ~/.codex/skills/human-grain-writer
@@ -50,88 +48,113 @@ cd ~/.codex/skills/human-grain-writer
 ./scripts/check_skill.sh
 ```
 
-```text
-使用 $human-grain-writer，把这份 Markdown 按 3/5 粗糙度改得像人写的。
-```
+Claude Code 项目级安装：把同一目录复制到项目的 `.claude/skills/human-grain-writer/`，然后重启会话。
 
-支持的入口、信息不足时的处理和扩展模式见 [`references/modes.md`](references/modes.md)。
-
-## 一个小例子
-
-原文：
-
-```markdown
-在数字化转型的时代背景下，本项目旨在全面提升团队协作效率，打造高效闭环。
-```
-
-处理后：
-
-```markdown
-团队现在不是没有工具。是工具太多了。
-
-消息在群里，任务在表格，最后谁来做经常要再问一遍。先把任务、负责人和截止时间放到一个地方，其他的后面再说。
-```
-
-完整前后对照见 [`examples/`](examples/)。设计取舍见 [`DESIGN.md`](DESIGN.md)，三轮迭代记录见 [`THREE-ROUNDS.md`](THREE-ROUNDS.md)，严格测试记录见 [`STRICT-TESTS.md`](STRICT-TESTS.md)。维护者本地文档回放见 [`LOCAL-TEST-REPORT.md`](LOCAL-TEST-REPORT.md)。
-
-设计依据和公开参考见 [`RESEARCH.md`](RESEARCH.md)。
-
-## 粗糙度不是随机损坏
-
-Human Grain 不使用连续乱码，也不会为了“像人”伪造经历或来源。它把人为感拆成两条轴：
-
-| 轴 | 控制什么 |
-| --- | --- |
-| 内容颗粒 | 口语、停顿、重复、自我修正、少量错别字 |
-| 格式颗粒 | 不对称标题、短段、旁注、临时标记、局部断裂 |
-
-格式变化必须服务于阅读节奏。可读性和事实准确性永远优先。
-
-## FAQ
-
-**会不会把文章故意写得很差？**
-
-不会随机损坏。它用有限的内容和格式动作制造人为颗粒，事实、代码、链接和关键字段优先保持准确。
-
-**能不能只改一段？**
-
-可以。使用 `repair` 并给出范围；没有范围时会先请求确认。
-
-**是否保证避开检测？**
-
-不保证，也不以规避检测为目标。它只改善可读性、作者感和结构自然度。
-
-## 项目文件
+然后在 Codex 或 Claude Code 中调用：
 
 ```text
-SKILL.md                 核心规则
+使用 $human-grain-writer，把这份 Markdown 按 3/5 改成像人写的版本。
+格式要灵动，不要随机乱；事实、链接、代码和关键字段不要动。
+```
+
+想要更强烈的版本：
+
+```text
+使用 $human-grain-writer，profile=extreme，typo_noise=on。
+跑完三轮，输出格式台账和噪声台账；允许毛边，但不要破坏 Markdown。
+```
+
+## What changes
+
+<p align="center"><img src="assets/compare.png" alt="Before and after: a rigid text block becomes a marked-up human draft" width="960"></p>
+
+<p align="center"><img src="assets/paper-transparent.png" alt="Transparent cutout of a marked document" width="180"></p>
+
+左边是均匀、完整、没有停顿的机器稿。右边不是“写差一点”这么简单：它换了节奏，保留未决点，偶尔停一下，并且让格式变化有理由。
+
+## Modes
+
+| Mode | 什么时候用 | 关键边界 |
+| --- | --- | --- |
+| `draft` | 只有主题、要点或零散材料 | 不足的信息留占位，不编造 |
+| `rewrite` | 已经写完，但太像模板 | 保留事实和判断 |
+| `repair` | 只改一段或一个问题 | 没有范围先确认，范围外不重写 |
+| `variant` | 同一材料换读者/场景 | 不新增能力、数据或承诺 |
+| `notes-to-doc` | 会议、聊天、待办碎片 | 保留来源感，敏感信息最小化 |
+
+实验入口：`continue`、`outline-to-doc`、`status-log`。它们仍然走同一套保护规则。完整输入契约见 [`references/modes.md`](references/modes.md)。
+
+## Roughness, not roulette
+
+粗糙度是 1-5 的刻度，内容颗粒和格式颗粒分开控制。默认是 `3/5`，`typo_noise=off`。
+
+| Profile | 适合 | 会不会故意改错 |
+| --- | --- | --- |
+| `standard` | 普通工作稿、提案、说明 | 只有明确打开 typo noise 才会 |
+| `extreme` | 实验稿、明显想摆脱 AI 味 | 有预算、可回滚、有台账 |
+| `safe` | 医疗、法律、财务、安全、代码、配置 | 不改错，不打断结构和顺序 |
+
+第三轮使用格式动作库，而不是固定模板：单句段、旁注、临时标题、引用块、不对称列表。每个动作都要记录位置、目的和可回滚性。
+
+## Guardrails
+
+- 不改事实、数字、因果、引用、链接、代码、命令和 front matter。
+- 不凭空添加人名、时间、经历、来源或“我亲眼见过”。
+- 保护代码围栏、图片 alt/destination、脚注、Mermaid、LaTeX、任务项和有序步骤。
+- 粗糙度 3/5 以上保留 noise ledger；关键字段永远是零噪声。
+- `repair` 没有范围时先请求确认；长文按标题分块并合并保护快照。
+
+## Repository map
+
+```text
+SKILL.md                 核心触发与三轮规则
 agents/openai.yaml       客户端展示信息
-references/              模式、AI-tell、颗粒度、格式和模型复核参考
-examples/                修改前/修改后/极致实验稿
-examples/rounds/         一次完整三轮运行的中间稿与 trace
-tests/cases/              7 组 fixture（5 核心 + 2 保护回归）
-DESIGN.md                设计思路与非目标
-RESEARCH.md              本地与公开参考来源
-THREE-ROUNDS.md          设计 loop 的发散、约束、收敛记录
-STRICT-TESTS.md           运行 loop 的三轮审查与 5 核心 + 2 保护回归
-LOCAL-TEST-REPORT.md      维护者本机文档回放（不含原文件）
-assets/                   PNG 预览、SVG 源文件和素材 provenance
-scripts/check_skill.sh    结构检查
-scripts/strict_audit.sh   严格审查入口
-scripts/validate_markdown.py 保护 token/fixture 校验
-scripts/ai_tell_report.py    Round-1 诊断报告
-scripts/validate_metadata.py CI 元数据检查
+references/              AI-tell、模式、格式、噪声和模型复核
+examples/                前后对照、极致档和完整 round trace
+tests/cases/              5 个核心 fixture + 2 个保护回归
+scripts/                 metadata、Markdown、AI-tell 和 strict audit
+assets/                  hero、对照图、流程图及素材 provenance
 ```
 
-Round-1 也可以单独跑：
+## Test it
 
 ```bash
+./scripts/check_skill.sh
+./scripts/strict_audit.sh
 python3 scripts/ai_tell_report.py path/to/document.md
 ```
 
-## 贡献
+当前回归结果：`3 audit loops, 5 core document cases, 2 protection regressions passed`。
 
-欢迎提交新的中文场景 fixture、格式动作案例和失败样本。请同时说明输入、粗糙度、期望保留的事实，以及为什么这个输出仍然可读。
+维护者用当前工作区的三份真实 Markdown 做过只读回放，未改原文件；记录见 [`LOCAL-TEST-REPORT.md`](LOCAL-TEST-REPORT.md)。
+
+## Read next
+
+- [`examples/`](examples/)：修改前、修改后和 `extreme` 样例
+- [`examples/rounds/TRACE.md`](examples/rounds/TRACE.md)：一份完整的中间稿 trace
+- [`DESIGN.md`](DESIGN.md)：为什么格式要灵动、为什么不使用随机错别字
+- [`RESEARCH.md`](RESEARCH.md)：本地 skill、公开 README 和外部 humanizer 的参考
+- [`STRICT-TESTS.md`](STRICT-TESTS.md)：7 组 fixture 的验证记录
+
+## FAQ
+
+<details>
+<summary>它是不是故意把文章写坏？</summary>
+
+不是随机写坏。它用有限的内容和格式动作制造人为颗粒，先保证读者还能继续读、继续改。
+</details>
+
+<details>
+<summary>能不能只修一个段落？</summary>
+
+可以。用 `repair` 并给出范围；没有范围时先确认，不会偷偷重写全文。
+</details>
+
+<details>
+<summary>它能保证通过 AI 检测吗？</summary>
+
+不能，也不以规避检测为目标。它只处理模板感、作者感和 Markdown 节奏。
+</details>
 
 ## License
 

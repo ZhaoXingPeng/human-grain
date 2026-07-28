@@ -10,6 +10,9 @@ Human Grain 的基础做法参考了本地 `content-humanizer` skill 的三段�
 | [humanizer-stack](https://github.com/NulightJens/humanizer-stack) | 表层 + 结构两阶段 | 改为三轮，并增加 Markdown 动作预算 | 公开仓库；未复制代码 |
 | [humanizer-zh-next](https://github.com/Hyacehila/humanizer-zh-next) | 中文痕迹和中文场景 | 采用中文优先，补充安全错别字台账 | 公开仓库；未复制代码 |
 | [LaTeXSnipper](https://github.com/SakuraMathcraft/LaTeXSnipper) | hero、示例、功能分区、快速开始 | 采用简洁首页骨架，减少装饰性 emoji | 仅参考公开 README 组织方式 |
+| [Bun](https://github.com/oven-sh/bun) | 居中品牌、少量徽章、Quick links、Install 分层 | 采用“先一句话，再给可执行入口”，不复制其视觉资产 | 仅参考公开 README 组织方式 |
+| [uv](https://github.com/astral-sh/uv) | 短价值主张、Highlights、主题视觉图、分层文档 | 采用短说明 + 对照图 + 可展开文档入口 | 仅参考公开 README 组织方式 |
+| [Codex CLI](https://github.com/openai/codex) | 产品 hero、Quickstart、Docs 入口 | 采用 hero + Quickstart 的首屏节奏 | 仅参考公开 README 组织方式 |
 
 Human Grain 在这些做法上增加了三点：格式动作预算、noise ledger、repair 的范围锁定。它不追求检测分数，也不承诺绕过任何平台检测。
 

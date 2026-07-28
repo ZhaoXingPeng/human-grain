@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 650" role="img" aria-labelledby="title desc">
+  <title id="title">Before and after comparison</title>
+  <desc id="desc">A rigid block of text becomes a varied, marked-up document.</desc>
+  <rect width="1600" height="650" fill="#f4f1e8"/>
+  <rect x="72" y="70" width="676" height="510" fill="#dedbd1"/>
+  <rect x="852" y="70" width="676" height="510" fill="#0d0f0e"/>
+  <text x="112" y="124" fill="#777f78" font-family="monospace" font-size="17" letter-spacing="3">BEFORE / TOO SMOOTH</text>
+  <text x="892" y="124" fill="#b8f04a" font-family="monospace" font-size="17" letter-spacing="3">AFTER / HUMAN GRAIN</text>
+  <g fill="#6b716c">
+    <rect x="112" y="174" width="552" height="14"/><rect x="112" y="208" width="540" height="14"/><rect x="112" y="242" width="562" height="14"/><rect x="112" y="276" width="526" height="14"/><rect x="112" y="310" width="550" height="14"/><rect x="112" y="344" width="530" height="14"/><rect x="112" y="378" width="566" height="14"/><rect x="112" y="412" width="530" height="14"/><rect x="112" y="446" width="550" height="14"/>
+  </g>
+  <g font-family="monospace" font-size="21">
+    <text x="892" y="180" fill="#f4f1e8"># 先说重点</text>
+    <text x="892" y="226" fill="#c9d0c8">团队不是没有工具。</text>
+    <text x="892" y="262" fill="#c9d0c8">是工具太多了。</text>
+    <rect x="888" y="286" width="390" height="26" fill="#b8f04a"/>
+    <text x="892" y="307" fill="#0d0f0e">先把任务放一起。</text>
+    <text x="892" y="368" fill="#f4f1e8">## 先记一下</text>
+    <text x="910" y="412" fill="#c9d0c8">- 负责人</text>
+    <text x="910" y="448" fill="#c9d0c8">- 截止时间（可后补）</text>
+    <text x="910" y="484" fill="#ff6b4a">TODO：这个点还没想定</text>
+  </g>
+  <path d="M112 520H664M892 536H1450" stroke="#b8f04a" stroke-width="5"/>
+</svg>
