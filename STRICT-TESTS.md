@@ -14,7 +14,7 @@
 
 用五组固定材料回放 `draft`、`rewrite`、`repair`、`variant`、`notes-to-doc`，再加两组 Markdown 保护回归（`protected`、`safe`）。每组都有输入、输出和三轮处理记录。脚本结果：通过。
 
-## 五组文档测试
+## 七组 fixture（五核心 + 两保护回归）
 
 | 编号 | 场景 | 重点 |
 | --- | --- | --- |

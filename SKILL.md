@@ -31,7 +31,7 @@ metadata:
 
 带 `*` 的是扩展入口，仍必须遵守同一套保护和三轮规则。
 
-如果用户没有说明，默认使用 `rewrite`，粗糙度为 3/5，`typo_noise=off`。用户明确说“极致”“更粗”“实验稿”时，启用 `extreme` profile：内容和格式两条轴独立拉高；只有用户也要求错别字时才打开 `typo_noise=on`。两种 profile 都仍执行保护对象、事实边界和 noise ledger。
+如果用户没有说明，默认使用 `rewrite`，粗糙度为 3/5，`typo_noise=off`。用户明确说“极致”“更粗”“实验稿”时，启用 `extreme` profile：内容和格式两条轴独立拉高；只有用户也要求错别字时才打开 `typo_noise=on`。所有 profile 都仍执行保护对象、事实边界和 noise ledger。
 
 ## 三轮处理（硬性）
 

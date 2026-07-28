@@ -44,6 +44,12 @@ Human Grain 是一个给 Codex / Claude Code 使用的 writing skill。
 
 把 `human-grain/` 放入 Codex 的 skills 目录（通常是 `~/.codex/skills/`），或放入 Claude Code 的 skills 目录（通常是项目级 `.claude/skills/`），然后直接引用：
 
+```bash
+git clone git@github.com:ZhaoXingPeng/human-grain.git ~/.codex/skills/human-grain-writer
+cd ~/.codex/skills/human-grain-writer
+./scripts/check_skill.sh
+```
+
 ```text
 使用 $human-grain-writer，把这份 Markdown 按 3/5 粗糙度改得像人写的。
 ```
@@ -107,7 +113,7 @@ tests/cases/              7 组 fixture（5 核心 + 2 保护回归）
 DESIGN.md                设计思路与非目标
 RESEARCH.md              本地与公开参考来源
 THREE-ROUNDS.md          设计 loop 的发散、约束、收敛记录
-STRICT-TESTS.md           运行 loop 的三轮审查与五组回放
+STRICT-TESTS.md           运行 loop 的三轮审查与 5 核心 + 2 保护回归
 LOCAL-TEST-REPORT.md      维护者本机文档回放（不含原文件）
 assets/                   PNG 预览、SVG 源文件和素材 provenance
 scripts/check_skill.sh    结构检查
