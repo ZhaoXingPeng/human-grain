@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 260" role="img" aria-labelledby="title desc">
+  <title id="title">Human Grain three-round process</title>
+  <desc id="desc">Three connected stages: strip, friction, grain.</desc>
+  <rect width="1200" height="260" fill="#141413"/>
+  <g font-family="Arial, sans-serif">
+    <text x="70" y="64" fill="#faf9f5" font-size="20" letter-spacing="3">THE THREE-ROUND LOOP</text>
+    <g transform="translate(70 105)">
+      <rect width="290" height="92" rx="3" fill="#d97757"/>
+      <text x="24" y="38" fill="#141413" font-size="25" font-weight="700">01 / STRIP</text>
+      <text x="24" y="68" fill="#141413" font-size="17">remove the machine sheen</text>
+    </g>
+    <path d="M390 151 H470" stroke="#b0aea5" stroke-width="3"/>
+    <path d="m460 141 14 10-14 10" fill="none" stroke="#b0aea5" stroke-width="3"/>
+    <g transform="translate(500 105)">
+      <rect width="290" height="92" rx="3" fill="#6a9bcc"/>
+      <text x="24" y="38" fill="#141413" font-size="25" font-weight="700">02 / FRICTION</text>
+      <text x="24" y="68" fill="#141413" font-size="17">let a person show up</text>
+    </g>
+    <path d="M820 151 H900" stroke="#b0aea5" stroke-width="3"/>
+    <path d="m890 141 14 10-14 10" fill="none" stroke="#b0aea5" stroke-width="3"/>
+    <g transform="translate(930 105)">
+      <rect width="200" height="92" rx="3" fill="#788c5d"/>
+      <text x="24" y="38" fill="#141413" font-size="25" font-weight="700">03 / GRAIN</text>
+      <text x="24" y="68" fill="#141413" font-size="17">shape the Markdown</text>
+    </g>
+  </g>
+</svg>
