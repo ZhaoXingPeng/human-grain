@@ -14,6 +14,6 @@ Human Grain 的基础做法参考了本地 `content-humanizer` skill 的三段�
 | [uv](https://github.com/astral-sh/uv) | 短价值主张、Highlights、主题视觉图、分层文档 | 采用短说明 + 对照图 + 可展开文档入口 | 仅参考公开 README 组织方式 |
 | [Codex CLI](https://github.com/openai/codex) | 产品 hero、Quickstart、Docs 入口 | 采用 hero + Quickstart 的首屏节奏 | 仅参考公开 README 组织方式 |
 
-Human Grain 在这些做法上增加了三点：格式动作预算、noise ledger、repair 的范围锁定。它不追求检测分数，也不承诺绕过任何平台检测。
+Human Grain 在这些做法上增加了三点：按体裁重排而不是套固定动作、把不确定性和协作入口当作真实毛边、对 repair 做范围锁定。2019 年以前的 20 个公开样本和抓取哈希见 [`references/pre-2019-corpus.md`](references/pre-2019-corpus.md)。它不追求检测分数，也不承诺绕过任何平台检测。
 
 本仓库没有复制这些项目的代码或大段文本；只借鉴公开描述的工作流思想。Human Grain 自己的实现以 MIT 发布，本地 `content-humanizer` 为 MIT，`tool-note-and-vote` 为 Apache-2.0；外部仓库的许可证以各自仓库当前声明为准，发布前不把其文件直接打包进本仓库。

@@ -16,10 +16,14 @@ title: 受保护 Markdown
 
 <!-- keep this comment -->
 
-```mermaid
+~~~~mermaid
 flowchart LR
   A --> B
-```
+~~~~
+
+````python
+print("keep")
+````
 
 ```math
 x^2 + y^2 = z^2

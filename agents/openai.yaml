@@ -1,4 +1,4 @@
 interface:
   display_name: "Human Grain｜人间颗粒"
   short_description: "让 Markdown 去掉 AI 味，保留灵动的人写毛边"
-  default_prompt: "使用 $human-grain-writer 的三轮流程，把这份文档去 AI 味，并按指定粗糙度生成自然、有颗粒感、格式灵活的 Markdown。"
+  default_prompt: "使用 $human-grain-writer，把这份 Markdown 按原文体裁重写成真实工作稿；最大力度调整结构，但保留事实、接口、数字、链接、代码和未决边界。"

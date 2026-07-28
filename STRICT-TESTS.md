@@ -1,35 +1,25 @@
 # Strict Test Record
 
-这份记录对应一次额外的三轮 loop。每轮检查不同的东西，避免只重复阅读同一段说明。
+当前严格检查验证四件事：技能契约存在、20 个早期样本有审计记录、固定反模板话术不会进入 fixture、Markdown 保护对象在安全改写中不丢。另有一组 `extreme` 回归，专门检查继承来的章节骨架是否真的被拆掉。
 
-## Loop 1：功能契约
-
-检查五种入口、默认粗糙度、三轮处理顺序、内容/格式双轴和事实保护。脚本结果：通过。
-
-## Loop 2：边界与攻击性输入
-
-检查 Markdown 围栏、链接、表格、敏感领域和随机乱码禁用规则。脚本结果：通过。
-
-## Loop 3：真实场景回放
-
-用五组固定材料回放 `draft`、`rewrite`、`repair`、`variant`、`notes-to-doc`，再加两组 Markdown 保护回归（`protected`、`safe`）。每组都有输入、输出和三轮处理记录。脚本结果：通过。
-
-## 七组 fixture（五核心 + 两保护回归）
+七组 fixture 覆盖：
 
 | 编号 | 场景 | 重点 |
 | --- | --- | --- |
-| 01 | 直接生产初稿 | 从 2 条笔记生成带颗粒的 Markdown |
-| 02 | 成稿重写 | 去套话但不改变判断 |
-| 03 | 局部修正 | 范围外版本号、负责人、原话保持不变 |
-| 04 | 同文档变体 | 换读者和场景，不只是换同义词 |
-| 05 | 会议碎片整理 | 保留来源感，不补不存在的结论 |
-| 06 | 受保护 Markdown | front matter、链接、脚注、Mermaid、LaTeX、任务项和步骤原样保留 |
+| 01 | 直接生产初稿 | 信息少时不补产品故事 |
+| 02 | 成稿重写 | 结构和开头变化，不只换同义词 |
+| 03 | 局部修正 | front matter、版本号、负责人和范围外原话不动 |
+| 04 | 同文档变体 | 换读者入口，不增加能力或承诺 |
+| 05 | 会议碎片整理 | 保留人名、建议和未决状态 |
+| 06 | 受保护 Markdown | 参考链接、脚注、可变围栏、Mermaid、任务项和步骤原样保留 |
 | 07 | safe profile | 配置代码块、顺序和数值不变 |
+| 08 | extreme 结构 | 标题骨架减少，段落密度不再平均，未决信息保留 |
 
 运行：
 
 ```bash
+./scripts/check_skill.sh
 ./scripts/strict_audit.sh
+python3 scripts/validate_metadata.py
+python3 scripts/validate_markdown.py
 ```
-
-预期输出：`RESULT: 3 audit loops, 5 core document cases, 2 protection regressions passed`
