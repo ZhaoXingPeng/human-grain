@@ -9,7 +9,7 @@ README 的视觉方向是“编辑工作台”：深炭黑 `#0d0f0e`、灰白 `#
 - Endpoint：`https://image.pollinations.ai/prompt/...`
 - Prompt：isolated off-white Markdown paper, lime highlight, flat magenta background, no desk or extra objects
 - Post-process：本地 `remove_chroma_key.py` 去背景，再用几何 mask 只保留纸张主体
-- 输出：512×655 RGBA，透明背景
+- 输出：510×655 RGBA，透明背景
 
 这张图只作为 README 的小型透明主体，不承担 hero 背景。生成源文件放在被 `.gitignore` 忽略的 `assets/generated/`，避免把带背景的实验图混入正式素材。
 
@@ -24,7 +24,7 @@ README 的视觉方向是“编辑工作台”：深炭黑 `#0d0f0e`、灰白 `#
 | `cover.png` | 1600×900 | README hero |
 | `compare.png` | 1600×650 | before/after 解释图 |
 | `three-rounds.png` | 1600×360 | 三轮流程图 |
-| `paper-transparent.png` | 512×655 RGBA | 透明主体小图 |
+| `paper-transparent.png` | 510×655 RGBA | 透明主体小图 |
 
 脱敏 prompts（接口恢复后可重试）：
 
