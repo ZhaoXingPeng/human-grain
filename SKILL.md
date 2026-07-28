@@ -16,7 +16,7 @@ metadata:
 
 ## 先选模式
 
-从用户请求中选择一个模式，并在输出中记录模式与粗糙度，例如：`模式：repair｜粗糙度：3/5`。如果输入有 YAML front matter，必须原样保留在首行；模式记录放在 front matter 后，或放进文末处理记录，不能破坏 front matter。
+从用户请求中选择一个模式，并在输出中记录模式、profile、粗糙度和 typo 开关，例如：`模式：repair｜profile：safe｜粗糙度：1/5｜typo_noise=off`。如果输入有 YAML front matter，必须原样保留在首行；模式记录放在 front matter 后，或放进文末处理记录，不能破坏 front matter。
 
 | 模式 | 输入 | 输出 |
 | --- | --- | --- |
@@ -58,6 +58,7 @@ metadata:
 - 不要随机打乱所有格式。格式变化必须有理由：强调、犹豫、插话、对照、暂存未决信息。
 - 标题层级可以不完全对称；列表项目可以长短不一；但代码围栏、链接、表格分隔线和 HTML 标签必须可解析。
 - 处理前先做一个轻量 token snapshot：YAML front matter、代码围栏、普通/引用式链接、脚注定义、HTML 注释、Mermaid/LaTeX 块、任务复选框、嵌套列表和有序步骤都列为保护对象。处理后逐项核对，保护对象不得被改写或丢失。
+- 图片语法（alt 文本和 destination）、HTML table/ARIA 属性、YAML anchor/alias 也进入保护快照。
 - 不跳级改标题、不打乱有序步骤、不拆散引用定义；“断开的列表”只表示内容粒度不对称，不表示缺少 Markdown 语法。
 - 如果原文已经有成熟结构，优先保留结构，只在局部留下毛边。
 - 先判断文本的来源形状（聊天、会议、说明、提案、日志）和阅读节奏，再选择 2-4 个格式动作；每次组合可以不同，不套固定配方。具体选择见 `references/format-playbook.md`。
@@ -88,6 +89,10 @@ metadata:
 
 粗糙度为 3/5 或以上时，内部保留一份 noise ledger；用户需要审计时再输出。每条记录包含：`原词 -> 变体`、轮次、位置、类型（漏字/近音/空格/口语缩写）和回滚理由。没有噪声时写 `无`。否定词、日期、金额、单位、人名、字段名、表格单元格、代码和链接永远不进入台账。
 
+### 格式台账
+
+第三轮至少保留一行：`格式台账：轮次 3｜动作｜位置｜目的｜可回滚：是/否`。如果是 safe profile 或短文 no-op，记录原因和“可回滚：是”。
+
 ## 内容与格式的安全边界
 
 1. 不改变原文事实、数字、因果、引用、代码、命令、链接和任务要求。
@@ -97,6 +102,7 @@ metadata:
 5. 用户说“只修某一段”时，其他段落不得顺手重写。
 6. 如果用户要求实验级粗糙度，仍然保持链接、代码、表格语法和 front matter 可解析；“灵动”不等于随机破坏。
 7. 格式动作有预算：默认 2-4 个种类，同时遵守出现次数上限；每个动作要能解释阅读目的，超过预算必须说明原因。
+8. 极短输入（少于 120 个 eligible 字符或只有一个标题）允许第三轮 no-op，记录“信息不足，保留原结构”；长文（超过 3,000 个 eligible 字符）按标题分块处理，并在最后合并全局保护快照和噪声台账。
 
 ## 模型与复核
 
@@ -105,7 +111,7 @@ metadata:
 ## 输出模板
 
 ```markdown
-模式：rewrite｜粗糙度：3/5
+模式：rewrite｜profile：standard｜粗糙度：3/5｜typo_noise=off
 
 # 文档标题（可以不那么完美）
 
@@ -119,6 +125,7 @@ metadata:
 - 要点二（这个后面可能还要改）
 
 处理记录：保留了原事实，打散了段落节奏，加入少量口语停顿；关键字段未做噪声处理。
+格式台账：轮次 3｜单句段 + 旁注｜开头/转折｜调整阅读节奏｜可回滚：是
 ```
 
 ## 最终检查
@@ -129,4 +136,4 @@ metadata:
 - 关键事实没有被“粗糙化”改错。
 - Markdown 结构至少能被常见渲染器正常解析。
 
-需要更详细的模式示例、噪声词表、格式动作或模型复核时，读取 `references/modes.md`、`references/roughness.md`、`references/examples.md`、`references/format-playbook.md` 和 `references/model-escalation.md`。
+需要更详细的模式示例、AI-tell 诊断、噪声词表、格式动作或模型复核时，读取 `references/modes.md`、`references/ai-tells.md`、`references/roughness.md`、`references/examples.md`、`references/format-playbook.md` 和 `references/model-escalation.md`。

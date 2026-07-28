@@ -12,7 +12,7 @@
 
 ## Loop 3：真实场景回放
 
-用五组固定材料回放 `draft`、`rewrite`、`repair`、`variant`、`notes-to-doc`。每组都有输入、输出和三轮处理记录。脚本结果：通过。
+用五组固定材料回放 `draft`、`rewrite`、`repair`、`variant`、`notes-to-doc`，再加两组 Markdown 保护回归（`protected`、`safe`）。每组都有输入、输出和三轮处理记录。脚本结果：通过。
 
 ## 五组文档测试
 
@@ -23,6 +23,8 @@
 | 03 | 局部修正 | 范围外版本号、负责人、原话保持不变 |
 | 04 | 同文档变体 | 换读者和场景，不只是换同义词 |
 | 05 | 会议碎片整理 | 保留来源感，不补不存在的结论 |
+| 06 | 受保护 Markdown | front matter、链接、脚注、Mermaid、LaTeX、任务项和步骤原样保留 |
+| 07 | safe profile | 配置代码块、顺序和数值不变 |
 
 运行：
 
@@ -30,4 +32,4 @@
 ./scripts/strict_audit.sh
 ```
 
-预期输出：`RESULT: 3 audit loops and 5 document cases passed`
+预期输出：`RESULT: 3 audit loops, 5 core document cases, 2 protection regressions passed`

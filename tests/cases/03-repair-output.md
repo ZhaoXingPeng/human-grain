@@ -3,7 +3,7 @@ title: 发布清单
 version: v1.4.2
 ---
 
-模式：repair｜粗糙度：2/5
+模式：repair｜profile：standard｜粗糙度：2/5｜typo_noise=off
 
 # 发布清单
 
@@ -17,3 +17,4 @@ version: v1.4.2
 
 处理记录：第 1 轮只定位了原 TODO，第 2 轮只改了指定段，第 3 轮保留了原 Markdown 结构；版本号、负责人和备注原样保留，关键字段噪声预算为 0。
 噪声台账：无（repair 范围与关键字段限制）。
+格式台账：轮次 3｜no-op｜全文｜repair 只改指定句｜可回滚：是。

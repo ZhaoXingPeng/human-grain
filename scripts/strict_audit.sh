@@ -41,8 +41,32 @@ grep -q '林夏' "$root/tests/cases/03-repair-output.md" || fail 'repair changed
 grep -q '目标读者：项目组成员' "$root/tests/cases/04-variant-input.md" || fail 'variant reader context missing'
 grep -q 'profile：extreme' "$root/examples/extreme.md" || fail 'extreme profile example missing'
 grep -q '噪声台账：' "$root/examples/extreme.md" || fail 'extreme noise ledger missing'
-pass 'loop 3 / five scenario fixtures'
+for trace_file in "$root/examples/rounds/01-input.md" "$root/examples/rounds/01-round-1-strip.md" "$root/examples/rounds/01-round-2-friction.md" "$root/examples/rounds/01-round-3-grain.md" "$root/examples/rounds/TRACE.md"; do
+  test -s "$trace_file" || fail "canonical round trace missing: $trace_file"
+done
+grep -q '格式台账：轮次 3' "$root/examples/rounds/01-round-3-grain.md" || fail 'round 3 format ledger missing'
+pass 'loop 3 / five core fixtures and two regressions'
 
 python3 "$root/scripts/validate_markdown.py" || fail 'markdown fixture validation'
 
-echo "RESULT: 3 audit loops and 5 document cases passed"
+audit_tmp="$(mktemp -d "${TMPDIR:-/tmp}/human-grain-audit.XXXXXX")"
+trap 'rm -rf "$audit_tmp"' EXIT
+for n in 01-draft 02-rewrite 03-repair 04-variant 05-notes-to-doc 06-protected 07-safe; do
+  python3 "$root/scripts/ai_tell_report.py" "$root/tests/cases/$n-input.md" > "$audit_tmp/before-$n.json"
+  python3 "$root/scripts/ai_tell_report.py" "$root/tests/cases/$n-output.md" > "$audit_tmp/after-$n.json"
+done
+python3 - "$audit_tmp" <<'PY' || fail 'AI-tell score did not improve or hold'
+import json
+import pathlib
+import sys
+root = pathlib.Path(sys.argv[1])
+for before in root.glob('before-*.json'):
+    after = root / before.name.replace('before-', 'after-')
+    b = json.loads(before.read_text())['total']
+    a = json.loads(after.read_text())['total']
+    if a > b:
+        raise SystemExit(f'{before.stem}: before={b}, after={a}')
+PY
+pass 'round 1 / AI-tell reports and score comparison for seven fixtures'
+
+echo "RESULT: 3 audit loops, 5 core document cases, 2 protection regressions passed"

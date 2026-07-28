@@ -1,10 +1,18 @@
 # Human Grain｜人间颗粒
 
+<p align="center">
+  <a href="https://github.com/ZhaoXingPeng/human-grain/actions/workflows/validate.yml"><img src="https://github.com/ZhaoXingPeng/human-grain/actions/workflows/validate.yml/badge.svg" alt="validation"></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-111111.svg" alt="MIT license"></a>
+  <a href="examples/"><img src="https://img.shields.io/badge/modes-5%20core%20%2B%203%20experimental-8aa66b.svg" alt="five core modes"></a>
+</p>
+
+<p align="center"><a href="examples/">Examples</a> · <a href="DESIGN.md">Design</a> · <a href="RESEARCH.md">Research</a> · <a href="STRICT-TESTS.md">Tests</a></p>
+
 > Make documents feel written, not generated.
 >
 > 让文档像人写的，不像机器生成的。
 
-![Human Grain cover](assets/cover.png)
+<p align="center"><img src="assets/cover.png" alt="A marked-up document on a dark field" width="960"></p>
 
 Human Grain 是一个给 Codex / Claude Code 使用的 writing skill。
 它不负责把文章润色得更漂亮，反而会把过度整齐的句子、段落和 Markdown 结构拆开一点，留下可控的人的痕迹。
@@ -58,7 +66,7 @@ Human Grain 是一个给 Codex / Claude Code 使用的 writing skill。
 消息在群里，任务在表格，最后谁来做经常要再问一遍。先把任务、负责人和截止时间放到一个地方，其他的后面再说。
 ```
 
-完整前后对照见 [`examples/`](examples/)。设计取舍见 [`DESIGN.md`](DESIGN.md)，三轮迭代记录见 [`THREE-ROUNDS.md`](THREE-ROUNDS.md)，严格测试记录见 [`STRICT-TESTS.md`](STRICT-TESTS.md)。
+完整前后对照见 [`examples/`](examples/)。设计取舍见 [`DESIGN.md`](DESIGN.md)，三轮迭代记录见 [`THREE-ROUNDS.md`](THREE-ROUNDS.md)，严格测试记录见 [`STRICT-TESTS.md`](STRICT-TESTS.md)。维护者本地文档回放见 [`LOCAL-TEST-REPORT.md`](LOCAL-TEST-REPORT.md)。
 
 设计依据和公开参考见 [`RESEARCH.md`](RESEARCH.md)。
 
@@ -92,16 +100,27 @@ Human Grain 不使用连续乱码，也不会为了“像人”伪造经历或�
 ```text
 SKILL.md                 核心规则
 agents/openai.yaml       客户端展示信息
-references/              模式、颗粒度、格式和模型复核参考
+references/              模式、AI-tell、颗粒度、格式和模型复核参考
 examples/                修改前/修改后/极致实验稿
-tests/cases/              五组输入输出 fixture
+examples/rounds/         一次完整三轮运行的中间稿与 trace
+tests/cases/              7 组 fixture（5 核心 + 2 保护回归）
 DESIGN.md                设计思路与非目标
 RESEARCH.md              本地与公开参考来源
 THREE-ROUNDS.md          设计 loop 的发散、约束、收敛记录
 STRICT-TESTS.md           运行 loop 的三轮审查与五组回放
+LOCAL-TEST-REPORT.md      维护者本机文档回放（不含原文件）
 assets/                   PNG 预览、SVG 源文件和素材 provenance
 scripts/check_skill.sh    结构检查
 scripts/strict_audit.sh   严格审查入口
+scripts/validate_markdown.py 保护 token/fixture 校验
+scripts/ai_tell_report.py    Round-1 诊断报告
+scripts/validate_metadata.py CI 元数据检查
+```
+
+Round-1 也可以单独跑：
+
+```bash
+python3 scripts/ai_tell_report.py path/to/document.md
 ```
 
 ## 贡献

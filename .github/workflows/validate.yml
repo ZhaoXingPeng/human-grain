@@ -14,6 +14,7 @@ jobs:
           test -f SKILL.md
           grep -q 'name: human-grain-writer' SKILL.md
           grep -q '\$human-grain-writer' agents/openai.yaml
+          python3 scripts/validate_metadata.py
           python3 -m py_compile scripts/validate_markdown.py
           bash scripts/check_skill.sh
       - name: Run strict audit

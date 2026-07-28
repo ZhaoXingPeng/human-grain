@@ -1,4 +1,4 @@
-模式：rewrite｜粗糙度：3/5
+模式：rewrite｜profile：standard｜粗糙度：3/5｜typo_noise=on
 
 # 项目背景（先说这个）
 
